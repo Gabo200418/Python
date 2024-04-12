@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplicación de dos dígitos</title>
+</head>
+
+<body>
+    <h1>Coordinación de aislamiento</h1>
+    <form action="/Urp_Ucw" method="POST">  <!-- Formulario que se enviará a la ruta '/multiplicar' utilizando el método POST -->
+        <button type="submit">Calcular Urp </button><br>
+
+        <h3>Tensiones representativas (Urp)</h3>
+        
+        <h4>Tensión a frecuencia industrial</h4>
+
+      <label for="num0">Tipo de Subestación:</label>
+      <select name="num0" id="num0">
+        <option value="AIS">AIS</option>
+        <option value="GIS">GIS</option>
+        <!-- <input type="text" id="num0" name="num0" required><br> -->
+      </select><br>
+        
+
+
+
+        <label for="num1">Tensión nominal del sistema (Un) :</label>
+        <input type="number" id="num1" name="num1" required><br> 
+        <label for="Us">Tension máxima del sistema Us:</label>
+        <input type="number" id="num2" name="num2" required><br>  
+        <label for="Um">Tensión máxima del equipamiento (Um): {{r1}}</label><br> 
+        <!-- <input type="text" id="Um" name="Um" ><br>   -->
+        <label for="Ubase">Tensión base (Ubase): {{r2}}</label><br>
+
+        <h4>Sobretensiones temporales</h4>
+
+        <h5>Por falla a tierra  </h5>
+        <label for="k">Factor de falla a tierra K (float):</label>
+        <input type="number" step="any" id="num3" name="num3" required><br>  
+        <label for="Ubase">Sobretensión temporal fase-tierra por falla a tierra (Urp(f-t)): {{r3}}</label><br>
+
+        <h5>Por rechazo de carga </h5>
+        <label for="num4">Factor de sobrecarga por rechazo de carga (K) (float):</label>
+        <input type="number" id="num4" step="any" name="num4" required><br> 
+        <label for="Ubase">Sobretensión temporal fase-fase por rechazo de carga (Urp(f-f)): {{r4}}</label><br>
+        <label for="Ubase">Sobretensión temporal fase-tierra por rechazo de carga (Urp(r-c)): {{r5}}</label><br>
+
+        <h4>Sobretensiones de frente lento</h4>
+        <h5>Impulsos que afectan equipos de entrada de línea, energización en extremo remoto </h5>
+        <label for="Ue">Sobretensión fase-tierra con probabilidad del 2% de ser excedida (Ue2):</label>
+        <input type="number" step="any" id="num5" name="num5" required><br>
+        <label for="Ubase">Sesgamiento de la distribución acumulada de las sobretensiones fase-tierra (Uet): {{r6}}</label><br>
+        <label for="Ubase">Sesgamiento de la distribución acumulada de las sobretensiones fase-tierra (Uet): {{r7}}</label><br>
+        <label for="Up">Sobretensión fase- fase con probabilidad del 2% de ser excedida (Up2):</label>
+        <input type="number" step="any" id="num6" name="num6" required><br>
+        <label for="Up_1">Sesgamiento de la distribución acumulada de las sobretensiones fase- fase (Upt): {{r8}}</label><br>
+        <label for="Upt_er">Sesgamiento de la distribución acumulada de las sobretensiones fase- fase (Upt): {{r9}}</label><br>
+
+        <h5>Impulsos que afectan todos los equipos, energización en extremo local</h5>
+    
+        <label for="Ue_2">Sobretensión fase- fase con probabilidad del 2% de ser excedida (Up2):</label>
+        <input type="number" step="any" id="num7" name="num7" required><br>
+        <label for="Up_1">Sesgamiento de la distribución acumulada de las sobretensiones fase-tierra (Uet): {{r910}}</label><br>
+        <label for="Up_1">Sesgamiento de la distribución acumulada de las sobretensiones fase-tierra (Uet): {{r10}}</label><br>
+        <label for="Up_3">Sobretensión fase- fase con probabilidad del 2% de ser excedida (Up2):</label>
+        <input type="number" id="num8" step="any" name="num8" required><br> 
+        <label for="Up_1">Sesgamiento de la distribución acumulada de las sobretensiones fase- fase (Upt): {{r11}}</label><br>
+        <label for="Up_1">Sesgamiento de la distribución acumulada de las sobretensiones fase- fase (Upt): {{r12}}</label><br>
+    
+        <h5>Descargadores en la entrada de la línea, energización desde extremo remoto</h5>
+    
+        <label for="Ups">Nivel de Protección al impulso tipo Maniobra (NPM) - UPS:</label>
+        <input type="number" id="num9" step="any" name="num9" required><br> 
+        <label for="Ups_1">Nivel de Protección al impulso tipo Rayo (NPR) - UPL:</label>
+        <input type="number" id="num10" step="any" name="num10" required><br> 
+        <label for="Up_1">Sobretensión de frente lento representativa fase-tierra (Urp) - para cualquier equipo: {{r13}}</label><br>
+        <label for="Up_1">Sobretensión de frente lento representativa fase-fase (Urp) - para equipo en la entrada de línea: {{r14}}</label><br>
+        <label for="Up_1">Sobretensión de frente lento representativa fase-fase (Urp) - para equipo excepto en la entrada de línea: {{r15}}
+        
+
+
+        
+        <!-- aqui va lo de moi -->
+        <h3>Tensiones de soportabilidad para coordinación (UCW)</h3>
+        <h4>Sobretensiones temporales</h4>
+
+        <label for="Ups_1">Factor de coordinación (Kc):</label>
+        <input type="number" id="num22" step="any" name="num22" required><br> 
+        <label for="Up_1">Sobretensión temporal fase-tierra (Ucw(f-t)): {{r20}}<br> 
+        <label for="Up_1">Sobretensión temporal fase-fase (Ucw(f-f)): {{r23}}<br> 
+
+        <h4>Sobretensiones de frente lento</h4>
+        <h5>Factor de coordinación determinístico</h5>
+        <h6>• Para equipos de entrada de línea:</h6>
+        <label for="Up_1">Sobretensión fase-tierra con probabilidad del 2% de ser excedida (Ue2): {{r24}}<br>  
+        <label for="Up_1">Sobretensión fase-fase con probabilidad del 2% de ser excedida (Up2): {{r25}}<br>  
+        <label for="Up_1">UPS/Ue2 - fase-tierra: {{r27}}<br>  
+        <label for="Up_1">2•UPS/Ue2 - fase-fase: {{r29}}<br>  
+        <label for="Ups_1">Factor de coordinación determinístico fase-tierra (Kcd) - se obtiene de gráfica:</label>
+        <input type="number" id="num23" step="any" name="num23" required><br> 
+        <label for="Ups_1">Factor de coordinación determinístico fase-fase (Kcd) - se obtiene de gráfica:</label>
+        <input type="number" id="num24" step="any" name="num24" required><br> 
+        <label for="Up_1">Tensión de coordinación fase-tierra (UCW): {{r30}}<br>  
+        <label for="Up_1">Tensión de coordinación fase-fase (UCW): {{r31}}<br>  
+
+        <h6>• Para todos los demás equipos:</h6>
+        <label for="Up_1">Sobretensión fase-tierra con probabilidad del 2% de ser excedida (Ue2): {{r32}}<br>  
+        <label for="Up_1">Sobretensión fase-fase con probabilidad del 2% de ser excedida (Up2): {{r33}}<br>  
+        <label for="Up_1">UPS/Ue2 - fase-tierra: {{r34}}<br>  
+        <label for="Up_1">2•UPS/Ue2 - fase-fase: {{r35}}<br>  
+        <label for="Ups_1">Factor de coordinación determinístico fase-tierra (Kcd) - se obtiene de gráfica:</label>
+        <input type="number" id="num25" step="any" name="num25" required><br> 
+        <label for="Ups_1">Factor de coordinación determinístico fase-fase (Kcd) - se obtiene de gráfica:</label>
+        <input type="number" id="num26" step="any" name="num26" required><br> 
+        <label for="Up_1">Tensión de coordinación fase-tierra (UCW): {{r38}}<br>  
+        <label for="Up_1">Tensión de coordinación fase-fase (UCW): {{r39}}<br>  
+
+        <h4>Sobretensiones de frente rápido</h4>
+        <label for="Up_1">Nivel de protección al impulso tipo rayo del descargador (Upl)  -  NPR: {{r40}}<br>  
+        <label for="Ups_1">Factor que describe el comportamiento de la línea ante descargas atmosféricas (A):</label>
+        <input type="number" id="num27" step="any" name="num27" required><br> 
+        <label for="Ups_1">Número mínimo de líneas conectadas a la subestación (n):</label>
+        <input type="number" id="num28" step="any" name="num28" required><br>    
+        <label for="Up_1">Separación eq. entre el descargador más cercano y el equipo en consideración (L) - para aislamiento interno: {{r45}}<br>  
+        <label for="Up_1">Separación eq. entre el descargador más cercano y el equipo en consideración (L) - para aislamiento externo: {{r46}} <br>            
+        <label for="Ups_1">Longitud de la conexión del descargador a la línea (a1):</label>
+        <input type="number" id="num29" step="any" name="num29" required><br> 
+        <label for="Ups_1">Longitud de la conexión a tierra del descargador (a2):</label>
+        <input type="number" id="num30" step="any" name="num30" required><br> 
+        <label for="Ups_1">Longitud del conductor de fase entre descargador y equipo a proteger - aislamiento interno - (a3):</label>
+        <input type="number" id="num31" step="any" name="num31" required><br> 
+        <label for="Ups_1">Longitud del conductor de fase entre descargador y equipo a proteger - aislamiento externo - (a3):</label>
+        <input type="number" id="num32" step="any" name="num32" required><br> 
+        <label for="Ups_1">Longitud de la parte activa del descargador (a4):</label>
+        <input type="number" id="num33" step="any" name="num33" required><br> 
+        <label for="Ups_1">Longitud del vano de las líneas (Lsp):</label>
+        <input type="number" id="num34" step="any" name="num34" required><br> 
+        <label for="Ups_1">Sección de la línea aérea calculada a partir de una tasa de salidas igual a una tasa de fallas aceptable (La):</label>
+        <input type="number" id="num35" step="any" name="num35" required><br> 
+        <label for="Ups_1">Tasa de fallas aceptable para el equipo - 1 falla/50 años - (Ra):</label>
+        <input type="number" id="num36" step="any" name="num36" required><br> 
+        <label for="Ups_1">Tasa de fallas por año del primer km de línea de la subestación (Rkm):</label>
+        <input type="number" id="num37" step="any" name="num37" required><br> 
+        <label for="Up_1">Tensión de soportabilidad de coordinación al impulso atmosférico (UCW) - para aislamiento interno: {{r43}}<br>  
+        <label for="Up_1">Tensión de soportabilidad de coordinación al impulso atmosférico (UCW) - para aislamiento externo: {{r44}}<br>  
+
+        <!-- <label for="Ups_1">Factor de coordinación (Kc):</label>
+        <input type="number" id="num20" step="any" name="num20" required><br> 
+    
+        <label for="num20">Sobretensión temporal fase-tierra (Ucw(f-t)): {{r20}} </label>
+        <label for="num20">Sobretensión temporal fase-fase (Ucw(f-f)): {{r21}} </label> -->
+
+
+        <!-- hasta aqui va lo de moi -->
+        <br><br><br>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            form {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            h1{
+               text-align: center;
+            }
+            h3 {
+                background-color: #f2f2f2;
+                padding: 5px;
+                margin-top: 20px;
+            }
+            label {
+                display: block;
+                margin-top: 10px;
+            }
+            input[type="number"] {
+                width: 100%;
+                padding: 5px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-left: 40%;
+                
+                
+            }
+            button:hover {
+                background-color: #45a049;
+            
+            }
+            
+        </style>
+    </form>
+
+
+
+
+    <form action="/Urw" method="POST">        
+        <button type="submit">Calcular Urw</button><br>
+
+        <h3>Tensiones de soportabilidad requeridas (URW)</h3>
+
+        <label for="num20">Tensión de soportabilidad de coordinación al impulso atmosférico (UCW) - para aislamiento interno (POR TABLA) :</label>
+        <input type="number" id="num38" step="any" name="num38" required><br>
+        <label for="num20">Tensión de soportabilidad de coordinación al impulso atmosférico (UCW) - para aislamiento externo (POR TABLA) :</label>
+        <input type="number" id="num39" step="any" name="num39" required><br>
+
+        <H3>Tensiones de soportabilidad requeridas (URW)</H3><br>
+       
+        <label for="Ups_1">Factor de seguridad para aislamiento interno (Ks):</label>
+        <input type="number" id="num40" step="any" name="num40" required><br>
+        <label for="Ups_1">Factor de seguridad para aislamiento externo (Ks):</label>
+        <input type="number" id="num41" step="any" name="num41" required><br>
+        
+        <label for="Up_1">Factor de corrección atmosférico (Ka)  -  tensiones corta duración frecuencia industrial: {{r47}}</label><br>
+        <label for="Up_1">Factor de corrección atmosférico (Ka)  -  impulso tipo maniobra - fase-tierra: {{r48}}</label><br>
+        <label for="Up_1">Factor de corrección atmosférico (Ka)  -  impulso tipo maniobra - fase-fase: {{r49}}</label><br>
+        <label for="Up_1">Factor de corrección atmosférico (Ka)  -  impulso tipo rayo: {{r50}}</label><br>
+        <label for="H">Altura sobre el nivel del mal (H):</label>
+        <input type="number" id="num42" step="any" name="num42" required><br>
+        
+        <h5>Parámetro de la forma de onda de sobretensión:</h5>
+
+        <label for="Ups_1">Tensiones corta duración frecuencia industrial (m):</label>
+        <input type="number" id="num43" step="any" name="num43" required><br>
+        <label for="Ups_1">Impulso tipo maniobra (m) - fase-tierra:</label>
+        <input type="number" id="num44" step="any" name="num44" required><br>
+        <label for="Ups_1">Impulso tipo maniobra (m) - fase-fase:</label>
+        <input type="number" id="num45" step="any" name="num45" required><br>
+        <label for="Ups_1">Impulso tipo rayo (m):</label>
+        <input type="number" id="num46" step="any" name="num46" required><br>
+    
+        <h4>Sobretensiones temporales</h4>
+        <label for="Up_1">Aislamiento externo, fase-tierra (Urw): {{r51}}<br>  
+        <label for="Up_1">Aislamiento externo, fase-fase (Urw): {{r52}}<br>  
+        <label for="Up_1">Aislamiento interno, fase-tierra (Urw): {{r53}}<br>  
+        <label for="Up_1">Aislamiento interno, fase-fase (Urw): {{r54}}<br> 
+            
+        <h4>Sobretensiones de frente lento</h4>
+        <h5>Equipo a la entrada de la línea</h5>
+        <label for="Up_1">Aislamiento externo, fase-tierra (Urw): {{r55}}<br>  
+        <label for="Up_1">Aislamiento externo, fase-fase (Urw): {{r56}}<br>
+
+        <h5>Otros equipos</h5>
+        <label for="Up_1">Aislamiento externo, fase-tierra (Urw): {{r57}}<br>  
+        <label for="Up_1">Aislamiento externo, fase-fase (Urw): {{r58}}<br>  
+        <label for="Up_1">Aislamiento interno, fase-tierra (Urw): {{r59}}<br>  
+        <label for="Up_1">Aislamiento interno, fase-fase (Urw): {{r60}}<br> 
+        
+        <h4>Sobretensiones de frente rápido</h4>
+        <label for="Up_1">Aislamiento externo, fase-tierra (Urw): {{r61}}<br>  
+        <label for="Up_1">Aislamiento externo, fase-fase (Urw): {{r62}}<br>  
+        <label for="Up_1">Aislamiento interno, fase-tierra (Urw): {{r63}}<br>  
+        <label for="Up_1">Aislamiento interno, fase-fase (Urw): {{r64}}<br> 
+
+
+       <!-- ultimaparte en el trabajo -->
+
+        <h3>Tensiones de soportabilidad normalizadas (UW)</h3>
+        <h4>Conversión a tensión de soportabilidad de corta duración a frecuencia industrial (SDW)</h4>
+       
+        <h5>Equipo a la entrada de la línea</h5>
+        <label for="Up_1">Aislamiento externo, fase-tierra (SDW): {{r65}}<br>  
+        <label for="Up_1">Aislamiento externo, fase-fase (SDW): {{r66}}<br> 
+        <h5>Otros equipos</h5>
+        <label for="Up_1">Aislamiento externo, fase-tierra (SDW): {{r67}}<br>  
+        <label for="Up_1">Aislamiento externo, fase-fase (SDW): {{r68}}<br>  
+        <label for="Up_1">Aislamiento interno, fase-tierra (SDW): {{r69}}<br>  
+        <label for="Up_1">Aislamiento interno, fase-fase (SDW): {{r70}}<br> 
+
+        <h4>Conversión a tensión de soportabilidad del impulso tipo rayo (LIW)</h4>
+        <h5>Equipo a la entrada de la línea</h5>
+        <label for="Up_1">Aislamiento externo, fase-tierra (LIW): {{r71}}<br>  
+        <label for="Up_1">Aislamiento externo, fase-fase (LIW): {{r72}}<br>
+        <h5>Otros equipos</h5>
+        <label for="Up_1">Aislamiento externo, fase-tierra (LIW): {{r73}}<br>  
+        <label for="Up_1">Aislamiento externo, fase-fase (LIW): {{r74}}<br>  
+        <label for="Up_1">Aislamiento interno, fase-tierra (LIW): {{r75}}<br>  
+        <label for="Up_1">Aislamiento interno, fase-fase (LIW): {{r76}}<br> 
+
+
+
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                }
+                form {
+                    max-width: 800px;
+                    margin: 0 auto;
+                }
+                h3 {
+                    background-color: #f2f2f2;
+                    padding: 5px;
+                    margin-top: 20px;
+                }
+                label {
+                    display: block;
+                    margin-top: 10px;
+                }
+                input[type="number"] {
+                    width: 100%;
+                    padding: 5px;
+                    margin-top: 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                }
+                button {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    margin-left: 40%;
+                    
+                    
+                }
+                button:hover {
+                    background-color: #45a049;
+                
+                }
+            </style>
+    </form>
+    
+    <!-- </form> -->
+<script>
+    // Formatear r5 con dos decimales
+    var r5 = r5.toFixed(2);
+</script>
+
+</body>
+</html>
